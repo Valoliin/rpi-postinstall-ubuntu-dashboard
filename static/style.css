@@ -1,0 +1,35 @@
+body {
+  font-family: sans-serif;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  padding: 16px;
+  width: 200px;
+  text-align: center;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+}
+
+.buttons button {
+  margin: 5px;
+  padding: 8px;
+}
