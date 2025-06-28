@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard Raspberry Pi</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>Applications disponibles</h1>
+  <div class="grid">
+    {% for name, data in apps.items() %}
+    <div class="card">
+      <img src="/static/{{ name }}.png" alt="{{ name }}" />
+      <h2>{{ name|capitalize }}</h2>
+      <div class="buttons">
+        <button onclick="controlApp('{{ name }}', 'start')">Démarrer</button>
+        <button onclick="controlApp('{{ name }}', 'stop')">Arrêter</button>
+        <a href="http://{{ request.host.split(':')[0] }}:{{ data.port }}" target="_blank">
+          <button>Ouvrir</button>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <script>
+    function controlApp(name, action) {
+      fetch(`/${action}/${name}`)
+        .then(res => res.json())
+        .then(data => alert(`${action} ${name}: ${data.status}`));
+    }
+  </script>
+</body>
+</html>
